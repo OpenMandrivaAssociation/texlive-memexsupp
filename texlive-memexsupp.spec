@@ -1,3 +1,9 @@
+# revision 15878
+# category Package
+# catalog-ctan /macros/latex/contrib/memexsupp
+# catalog-date 2008-08-22 15:19:59 +0200
+# catalog-license lppl
+# catalog-version 0.1
 Name:		texlive-memexsupp
 Version:	0.1
 Release:	1
@@ -41,6 +47,7 @@ release.
 %doc %{_texmfdistdir}/doc/latex/memexsupp/README
 %doc %{_texmfdistdir}/doc/latex/memexsupp/memexsupp.pdf
 %doc %{_texmfdistdir}/doc/latex/memexsupp/memexsupp.tex
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -51,3 +58,5 @@ release.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
