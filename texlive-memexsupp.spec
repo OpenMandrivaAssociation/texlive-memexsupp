@@ -6,7 +6,7 @@
 # catalog-version 0.1
 Name:		texlive-memexsupp
 Version:	0.1
-Release:	4
+Release:	5
 Summary:	Experimental memoir support
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/memexsupp
