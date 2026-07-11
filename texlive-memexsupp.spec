@@ -1,44 +1,22 @@
-Name:		texlive-memexsupp
-Version:	15878
-Release:	2
+%global tl_name memexsupp
+%global tl_revision 79618
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	0.1
+Release:	%{tl_revision}.1
 Summary:	Experimental memoir support
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/memexsupp
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/memexsupp.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/memexsupp.doc.r%{version}.tar.xz
+License:	lppl1.3
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/memexsupp.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/memexsupp.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-A package of code proposed as supporting material for memoir.
-The package is intended as a test bed for such code, which may
-in the fullness of time be adopted into the main memoir
-release.
+A package of code proposed as supporting material for memoir. The
+package is intended as a test bed for such code, which may in the
+fullness of time be adopted into the main memoir release.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/memexsupp/memexsupp.sty
-%doc %{_texmfdistdir}/doc/latex/memexsupp/README
-%doc %{_texmfdistdir}/doc/latex/memexsupp/memexsupp.pdf
-%doc %{_texmfdistdir}/doc/latex/memexsupp/memexsupp.tex
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc %{buildroot}%{_texmfdistdir}
